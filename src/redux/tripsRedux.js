@@ -5,19 +5,20 @@ export const getAllTrips = ({trips}) => trips;
 export const getFilteredTrips = ({trips, filters}) => {
   let output = trips;
 
-  // filter by search phrase
-  if(filters.searchPhrase){
+  const selectedTag = filters.tags[1];
+  if (filters.searchPhrase) {
     const pattern = new RegExp(filters.searchPhrase, 'i');
     output = output.filter(trip => pattern.test(trip.name));
   }
 
-  // TODO - filter by duration
-
-  // TODO - filter by tags
-  // if(filters.tag){
-  //   trips = trips.filter(trip => trip.tag === filters.tag);
-  // TODO - sort by cost descending (most expensive goes first)
-  // }
+  if (selectedTag) {
+    output = output.filter((trip) => {
+      return trip.tags.indexOf(selectedTag) > -1;
+    });
+  }
+  output = output.filter((trip) => {
+    return trip.days >= filters.duration.from && trip.days <= filters.duration.to;
+  });
   return output;
 };
 
@@ -29,7 +30,7 @@ export const getTripById = ({trips}, tripId) => {
   console.log('filtering trips by tripId:', tripId, filtered);
 
   return filtered.length ? filtered[0] : {error: true};
- 
+
 };
 
 export const getTripsForCountry = ({trips}, countryCode) => {
@@ -41,12 +42,12 @@ export const getTripsForCountry = ({trips}, countryCode) => {
   return filtered.length ? filtered : [{error: true}];
 };
 
-/* ACTIONS */
+/*ACTIONS */
 
 /*
 // action name creator
 const reducerName = 'trips';
-const createActionName = name => `app/${reducerName}/${name}`;
+const createActionName = name => app/${reducerName}/${name};
 
 // action types
 
@@ -56,9 +57,9 @@ const createActionName = name => `app/${reducerName}/${name}`;
 
 // reducer
 export default function reducer(statePart = [], action = {}) {
-  switch (action.type) {
-    default:
-      return statePart;
-  }
+switch (action.type) {
+default:
+return statePart;
 }
- */
+}
+*/
