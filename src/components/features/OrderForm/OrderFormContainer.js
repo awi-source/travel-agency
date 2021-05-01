@@ -5,6 +5,7 @@ import OrderForm from './OrderForm';
 
 const mapStateToProps = state => ({
   options: getOrderOptions(state),
+  setOrderOption: setOrderOption(state),
 });
 
 const mapDispatchToProps = dispatch => ({
