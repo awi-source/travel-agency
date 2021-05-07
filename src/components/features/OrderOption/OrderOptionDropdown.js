@@ -6,7 +6,7 @@ import { formatPrice} from '../../../utils/formatPrice';
 
 
 const OrderOptionDropdown = ({values, required, currentValue, setOptionValue}) => (
-
+ 
   <select
     className={styles.dropdown}
     value={currentValue}
@@ -18,7 +18,8 @@ const OrderOptionDropdown = ({values, required, currentValue, setOptionValue}) =
     )}
     {values.map(value => (
       
-      <option key={value.id} value={value.id}>{value.name} ({formatPrice(value.price)})</option>
+      <option key={value.id} value={value.id}>{value.name} ({formatPrice(value.price)})
+      </option>
     ))}
     
   </select>

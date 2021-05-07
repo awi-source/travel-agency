@@ -16,6 +16,7 @@ const optionTypes = {
 };
 
 const OrderOption = ({name, id, setOrderOption, option,  ...otherProps }) => {
+
   const OptionComponent = optionTypes[option.type];
   if(!OptionComponent){
     return null;
@@ -24,14 +25,12 @@ const OrderOption = ({name, id, setOrderOption, option,  ...otherProps }) => {
       <div className={styles.component}>
         <h3 className={styles.title}>{name}</h3>
         <OptionComponent
-          {...otherProps} setOptionValue={value => setOrderOption({[id]: value})}
+          {...otherProps} {...option} setOptionValue={value => setOrderOption({[id]: value})}
         />
       </div>
     );
   }
 };
 
-// OrderForm.propTypes = {
- 
-// };
+
 export default OrderOption;

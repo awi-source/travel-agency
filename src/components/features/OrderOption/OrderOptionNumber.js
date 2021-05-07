@@ -5,23 +5,26 @@ import { formatPrice} from '../../../utils/formatPrice';
 
 
 
-const OrderOptionNumber = ({limits, currentValue, setOptionValue, value}) => (
+const OrderOptionNumber = ({limits, price, currentValue, setOptionValue}) => (
   <div className={styles.number}>
     <input className={styles.inputSmall} 
       type="number" 
       min={limits.min} max={limits.max} 
       value={currentValue} 
       onChange={event => setOptionValue(event.currentTarget.value)}
-    ></input> ({formatPrice(value.price)})
+    /> 
+    ({formatPrice(price)})
   </div>
   
+
   
 );
 
 OrderOptionNumber.propTypes = {
-  limits: PropTypes.number,
-  currentValue: PropTypes.number,
+  limits: PropTypes.object,
+  currentValue: PropTypes.node,
   setOptionValue: PropTypes.func,
   value: PropTypes.number,
+  price: PropTypes.string,
 };
 export default OrderOptionNumber;
