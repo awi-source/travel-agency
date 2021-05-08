@@ -4,15 +4,17 @@ import OrderOptionDropdown from './OrderOptionDropdown';
 import OrderOptionIcons from './OrderOptionIcons';
 import OrderOptionNumber from './OrderOptionNumber';
 import OrderOptionCheckboxes from './OrderOptionCheckboxes';
-// import {Grid, Row, Col} from 'react-flexbox-grid';
-// import OrderSummary from '../OrderSummary/OrderSummary';
-// import PropTypes from 'prop-types';
+import OrderOptionText from './OrderOptionText';
+import OrderOptionDate from './OrderOptionDate';
+
 
 const optionTypes = {
   dropdown: OrderOptionDropdown,
   icons: OrderOptionIcons,
   checkboxes: OrderOptionCheckboxes,
   number: OrderOptionNumber,
+  text: OrderOptionText,
+  date: OrderOptionDate,
 };
 
 const OrderOption = ({name, id, setOrderOption, option,  ...otherProps }) => {
